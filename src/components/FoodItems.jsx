@@ -1,16 +1,11 @@
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import FoodCard from "./FoodCard";
-import FoodData from "../data/FoodData.js";
 import Stripe from "stripe";
 async function getStripeProducts() {
-  const stripe = new Stripe(
-    "sk_test_51QnL99SIUCovxDtGGj0ahnp1F5Vls7TBS7VyiXwOqH0bm8CVKyn5ML1awZheM3PHAgGNgLgF5lBqxn8yyRk8YaeS00uXRa8TGs" ??
-      "",
-    {
-      apiVersion: "2024-04-10",
-    }
-  );
+  const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET ?? "", {
+    apiVersion: "2024-04-10",
+  });
   const res = await stripe.prices.list({
     expand: ["data.product"],
   });
@@ -18,7 +13,6 @@ async function getStripeProducts() {
   return prices;
 }
 const products = await getStripeProducts();
-console.log(products);
 
 const FoodItems = () => {
   const handleToast = ({ name }) => toast.success(` Added ${name} to cart`);
