@@ -1,14 +1,14 @@
-# Food Zone
+<!-- # Food Zone
 
 Food Zone UI is a user interface project aimed at providing a visually appealing and user-friendly front end for a food-related application. It incorporates various technologies such as React.js, Tailwind CSS, and Redux Toolkit to create a seamless and interactive experience for users.
 
 ## 📸 Screenshots
 - **full view**
-  
+
 ![full website](https://github.com/mohitmaithanii/Food-Zone/assets/126086791/55c50dfe-ac31-4de7-9ce3-f40f1db57862)
 
 - **About**
-  
+
 ![about us](https://github.com/mohitmaithanii/Food-Zone/assets/126086791/7d19d299-cb95-49d0-900e-4466e1d62871)
 
 - **menu**
@@ -85,13 +85,13 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 
 1. Fork the repository.
 
-2. Create a new branch 
+2. Create a new branch
 ```bash
   git checkout -b feature/your-feature-name
 ```
 3. Make your changes.
 
-4. Commit your changes 
+4. Commit your changes
 ```bash
   git commit -am 'Add some feature'
 ```
@@ -101,12 +101,12 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 ```bash
   git push origin feature/your-feature-name
 ```
-6. Create a new Pull Request. 
+6. Create a new Pull Request.
 ## 🙏 Acknowledgements
 
 Special thanks to the creators and contributors of React.js, Tailwind CSS, and Redux Toolkit for providing the tools necessary to build this project. Also, gratitude to Hitesh Chaudhary for his valuable tutorials on React.js.
-## 📌 Related 
+## 📌 Related
 
 - [javascript Learning](https://github.com/mohitmaithanii/JavaScript-Learning)
 - [javascript Beginner Projects](https://github.com/mohitmaithanii/Beginner-Javascript-Projects)
-- [react Learning](https://github.com/mohitmaithanii/React-Learning)
+- [react Learning](https://github.com/mohitmaithanii/React-Learning) -->
