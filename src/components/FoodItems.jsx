@@ -1,25 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import FoodCard from "./FoodCard";
 import Stripe from "stripe";
+
+const stripe = new Stripe(
+  "sk_test_51QnL99SIUCovxDtGGj0ahnp1F5Vls7TBS7VyiXwOqH0bm8CVKyn5ML1awZheM3PHAgGNgLgF5lBqxn8yyRk8YaeS00uXRa8TGs" ??
+    "",
+  {
+    apiVersion: "2024-04-10",
+  }
+);
+
 async function getStripeProducts() {
-  const stripe = new Stripe(
-    "sk_test_51QnL99SIUCovxDtGGj0ahnp1F5Vls7TBS7VyiXwOqH0bm8CVKyn5ML1awZheM3PHAgGNgLgF5lBqxn8yyRk8YaeS00uXRa8TGs" ??
-      "",
-    {
-      apiVersion: "2024-04-10",
-    }
-  );
   const res = await stripe.prices.list({
     expand: ["data.product"],
   });
-  const prices = res.data;
-  return prices;
+  return res.data;
 }
-const products = await getStripeProducts();
 
 const FoodItems = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await getStripeProducts();
+        setProducts(products);
+      } catch (error) {
+        setError("Failed to fetch products. Please try again later.");
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   const handleToast = ({ name }) => toast.success(` Added ${name} to cart`);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
